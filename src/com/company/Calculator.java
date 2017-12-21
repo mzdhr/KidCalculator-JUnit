@@ -44,4 +44,8 @@ public class Calculator {
     public int division(int firstNumber, int secondNumber) {
         return firstNumber / secondNumber;
     }
+
+    public int longDivision(int number1, int number2) {
+        return number1 + number2 + 1;
+    }
 }
