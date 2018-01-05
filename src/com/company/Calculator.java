@@ -4,6 +4,8 @@ public class Calculator {
     private String mColor;
     private boolean mPower;
 
+    public Calculator(){}
+
     public Calculator(String color) {
         mColor = color;
     }
@@ -47,5 +49,9 @@ public class Calculator {
 
     public int longDivision(int number1, int number2) {
         return number1 + number2 + 1;
+    }
+
+    public boolean getPower() {
+        return mPower;
     }
 }
