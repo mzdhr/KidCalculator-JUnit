@@ -6,14 +6,19 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Categories.class)
-@Categories.IncludeCategory(CategorySlowTest.class)     // We will make this suite runs only Tests that market as Slow.
+// This Runner runs only @Tests Methods that annotated with CategorySlowTest.java.
+@Categories.IncludeCategory(CategorySlowTest.class)
+// If you want to exclude any Category use:
+// @Categories.ExcludeCategory(CategorySlowTest.class)
 @Suite.SuiteClasses({
         MainTest.class,
-        MathematicalAdditionTest.class,         // Or we can use our last Suite -> MathematicalSuiteAllTest.class ...
-        MathematicalSubtractionTest.class,      // ... that contains all these four classes.
+        // Or we can use our last Suite -> MathematicalSuiteAllTest.class ...
+        // ... that contains all these four classes:
+        MathematicalAdditionTest.class,
+        MathematicalSubtractionTest.class,
         MathematicalMultiplicationTest.class,
         MathematicalDivisionTest.class
 })
-
 public class MathematicalSuiteCategoriesTest {
 }
+

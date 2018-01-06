@@ -34,7 +34,8 @@ public class MathematicalAdditionTest {
     }
 
     @Test
-    @Category({CategorySlowTest.class})     // Marking this Test as CategorySlowTest, you can add more Categories too.
+    // Marking this Test as CategorySlowTest, you can add more Categories too.
+    @Category({CategorySlowTest.class})
     public void addition_c_test(){
         // Action
         int result = calculator.addition(-1, -1);
