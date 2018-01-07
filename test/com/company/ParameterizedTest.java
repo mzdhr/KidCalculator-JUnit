@@ -6,18 +6,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
-
-@RunWith(Parameterized.class)   // This class become Parameterized.class Runner, rather than the default JUnit Runner.
+// This class become a Parameterized Runner.
+@RunWith(Parameterized.class)
 public class ParameterizedTest {
 
     // Fields
     private Calculator mCalculator;
-    private int mInput01;   // used as input for the first number.
-    private int mInput02;   // used as input for the second number.
-    private int mExpect;    // used as output for expect test result.
-
+    private int mInput01;   // uses to store input for the first number.
+    private int mInput02;   // uses to store input for the second number.
+    private int mExpect;    // uses to store input for the expect test result.
 
     @Before
     public void setUp(){
@@ -25,34 +25,34 @@ public class ParameterizedTest {
         mCalculator = new Calculator("Orange");
     }
 
-
-    // Notation for that data, that we want to test it as parameters inputs.
-    @Parameterized.Parameters
-    public static List<Object[]> data(){
-        return Arrays.asList(new Object[][]{
-                {2, 4, 6},
-                {4, 4, 8},
-                {11, 4, 2}
-        });
-    }
-
-
-    // Class Construction, to hook the values to test()
+    // Class Constructor -> To hook the values to our @Test Method.
+    // It will run for each parameter we have in our Data.
     public ParameterizedTest(int input01, int input02, int expected){
         mInput01 = input01;
         mInput02 = input02;
         mExpect = expected;
     }
 
+    // This notation provide the input parameters for our @Test Method via the Constructor.
+    @Parameterized.Parameters
+    public static List<Object[]> data(){
+        return Arrays.asList(new Object[][]{
+                {2, 4, 6},          // means: 2 + 4 = 6
+                {4, 4, 8},          // means: 4 + 4 = 8
+                {-11, 4, -7},       // means: -11 + 4 = -7
+                {66, 395, 461},     // means: 66 + 395 = 461
+                {1000, -4, 996},    // means: 1000 + 4 = 996
+                {99, 1, 100}        // means: 99 + 1 = 100
+        });
+    }
 
-    // Our only test method, that gonna test all inputs and outputs.
-    // Rather than writing too many methods for each inputs and outputs.
+    // Our @Test Method
     @Test
-    public void test(){
+    public void additions_test(){
         // Action
         int result = mCalculator.addition(mInput01, mInput02);  // first number + second number = result.
         // Assert
-        assertEquals(result, mExpect);  // Is result == mExpect?
+        assertEquals(result, mExpect);
     }
 
 }

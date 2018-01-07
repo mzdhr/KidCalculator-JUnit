@@ -1,38 +1,52 @@
 package com.company;
 
+import org.junit.Before;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.*;
 
-@RunWith(Theories.class)    // This class become Theories.class Runner, rather than the default JUnit Runner.
+// This class become Theories.class Runner.
+@RunWith(Theories.class)
 public class TheoriesTest {
 
-//    @DataPoint
-//    public static int da = 4;
-//
-//    @DataPoint
-//    public static int da2 = 2;
-//
-//    @DataPoint
-//    public static int da3 = 1;
+    // Fields
+    private Calculator mCalculator;
 
 
+    @Before
+    public void setUp(){
+        // Arrange
+        mCalculator = new Calculator("Purple");
+    }
+
+    // Our Data Points (the inputs)
     @DataPoints
     public static int[] data() {
         return new int[]{
-                3, 1, 2, 4, 7, 9
+                2, 6, 8, 7, 3, 0
         };
     }
 
-
+    // Our @Theory Method, not a @Test
     @Theory
-    public void test(int value1, int value2){
-        Calculator calculator = new Calculator("Purple");
-        int range = calculator.addition(value1, value2);
-        assertTrue(range > 0 && range < 20);
-        System.out.println(value1 + " + " + value2 + " = " + range);
+    public void addition_even_result_test(int value1, int value2){
+        // Assumptions -> assumeTrue(), assumeNotNull(), assumeNoException(), assumeThat(), etc...
+        assumeTrue(value1 % 2 == 0);
+        assumeTrue(value2 % 2 == 0);
+        assumeTrue( value1 != 0);
+        assumeTrue( value2 != 0);
+
+        // Action
+        int sumResult = mCalculator.addition(value1, value2);
+
+        // Assert
+        assertTrue( sumResult % 2 == 0);
+
+        // Just for demonstration
+        System.out.println(value1 + " + " + value2 + " = " + sumResult +" is even");
     }
 
 }
