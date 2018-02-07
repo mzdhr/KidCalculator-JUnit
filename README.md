@@ -20,7 +20,8 @@ Java project to practice JUnit testing in Java.
 
 ## اي استفسار تواصل معي على
 * Contact with me at any time at [Twitter](https://twitter.com/mohammadlaif)
-* Contact with me at any time at [Twitter](https://www.facebook.com/mohammadl2525)
+* Contact with me at any time at [Facebook](https://www.facebook.com/mohammadl2525)
+* Contact with me at any time at [Blog](https://www.mzdhr.com)
 
 ## Licensed
 * Licensed under The [MIT License](../master/LICENSE).
